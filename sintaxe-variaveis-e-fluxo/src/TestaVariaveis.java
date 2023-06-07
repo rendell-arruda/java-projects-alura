@@ -5,7 +5,7 @@ public class TestaVariaveis {
         int  idade;
         idade = 31;
         idade = 30 + 10;
-  
+
         System.out.println("A idade é " + idade);
 
     }
