@@ -9,7 +9,7 @@ public class TestaBanco {
         Conta contaDoPaulo = new Conta();
         contaDoPaulo.deposita(100);
 
-        //referencia o atributo Cliente titular à classe ao objeto paulo do tipo Cliente
+        //associa o cliente paulo a conta do paulo
         contaDoPaulo.titular = paulo;
 
         System.out.println(contaDoPaulo.titular.nome);
