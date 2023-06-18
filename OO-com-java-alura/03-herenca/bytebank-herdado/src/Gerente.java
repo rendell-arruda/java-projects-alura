@@ -1,6 +1,5 @@
 // gerente herda do funcionario.
 public class Gerente extends Funcionario {
-
     private int senha;
 
     public void setSenha(int senha) {
@@ -15,7 +14,8 @@ public class Gerente extends Funcionario {
         }
     }
 
-//    public double getBonificacao() {
-//        return this.salario;
-//    }
+    // reescrita do metodo
+    public double getBonificacao() {
+        return super.salario;
+    }
 }
