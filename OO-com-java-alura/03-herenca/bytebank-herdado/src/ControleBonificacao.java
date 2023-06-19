@@ -4,6 +4,8 @@ public class ControleBonificacao {
 
     public void registra(Funcionario f){
         double boni = f.getBonificacao();
+
+        //para somar todas as bonificacoes
         this.soma = this.soma + boni;
     }
 
