@@ -16,6 +16,7 @@ public class Gerente extends Funcionario {
 
     // reescrita do metodo
     public double getBonificacao() {
-        return super.salario;
+        //chama a implementacao padrao da bonificacao
+        return super.getBonificacao() + super.getSalario();
     }
 }
