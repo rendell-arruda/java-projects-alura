@@ -25,26 +25,24 @@ public class Conta {
     }
 
     public boolean saca(double valor) {
-
-        if (this.saldo >= valor) {
-//          this.saldo -= valor;
-            deposita(valor);
+        if(this.saldo >= valor) {
+            this.saldo -= valor;
             return true;
-
         } else {
             return false;
         }
     }
 
+
     public boolean transfere(double valor, Conta destino) {
-        if (this.saldo >= valor) {
-            this.saldo -= valor;
+        if(this.saca(valor)) {
             destino.deposita(valor);
             return true;
+        } else {
+            return false;
         }
-        return false;
-
     }
+
 
     public double getSaldo() {
         return this.saldo;
