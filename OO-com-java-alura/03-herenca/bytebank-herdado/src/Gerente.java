@@ -1,7 +1,11 @@
 // gerente herda do Funcionario e implementa/assina o contrato Autenticavel
 public class Gerente extends Funcionario implements Autenticavel {
 	
-    private int senha;
+	private AutenticacaoUtil autenticador;
+
+	public Gerente() {
+		this.autenticador = new AutenticacaoUtil();
+	}
     
     
     // reescrita do metodo
@@ -12,17 +16,17 @@ public class Gerente extends Funcionario implements Autenticavel {
         return super.getSalario();
     }
 
-    public void setSenha(int senha) {
-        this.senha = senha;
-    }
+    @Override
+	public void setSenha(int senha) {
+		this.autenticador.setSenha(senha);
 
-    public boolean autentica(int senha) {
-        if (this.senha == senha) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+	}
+
+	@Override
+	public boolean autentica(int senha) {
+		return this.autenticador.autentica(senha);
+
+	}
 
   
 }
