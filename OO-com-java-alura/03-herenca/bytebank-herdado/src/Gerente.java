@@ -1,5 +1,5 @@
-// gerente herda do funcionario.
-public class Gerente extends Funcionario {
+// gerente herda do funcionarioautenticavel que por sua vez é um funcionario
+public class Gerente extends FuncionarioAutenticavel {
     private int senha;
 
     public void setSenha(int senha) {

@@ -3,6 +3,8 @@ public abstract class Funcionario {
     private String nome;
     private String cpf;
     private double salario;
+    
+     
 
     //metodo sem corpo, não ha uma implementacao
     public abstract double getBonificacao();
