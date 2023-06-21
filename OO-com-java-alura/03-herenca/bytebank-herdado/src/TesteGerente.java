@@ -1,5 +1,8 @@
 public class TesteGerente {
     public static void main(String[] args) {
+    	
+    	Autenticavel referencia = new Administrador();
+    	
         Gerente gerente1 = new Gerente();
         gerente1.setNome("Marco");
         gerente1.setCpf("11111111111");
