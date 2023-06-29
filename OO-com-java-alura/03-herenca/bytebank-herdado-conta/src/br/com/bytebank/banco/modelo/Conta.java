@@ -1,104 +1,92 @@
 package br.com.bytebank.banco.modelo;
-
 /**
  * Classe representa a moldura de uma conta
- * 
- * @author rendellarruda
- * @version 0.1
+ * @author Rendell Arruda
  */
+
 public abstract class Conta {
 
-	// atributos de conta
-	protected double saldo;
-	private int agencia;
-	private int numero;
-	private Cliente titular;
-	private static int total;
+    protected double saldo;
+    private int agencia;
+    private int numero;
+    private Cliente titular;
+    private static int total = 0;
+    
+    
+    /**
+     * Construtor para inicializar o objeto Conta a partir da agencia e numero
+     * @param agencia
+     * @param numero
+     */
+    public Conta(int agencia, int numero){
+        Conta.total++;
+        //System.out.println("O total de contas é " + Conta.total);
+        this.agencia = agencia;
+        this.numero = numero;
+        //this.saldo = 100;
+        //System.out.println("Estou criando uma conta " + this.numero);
+    }
 
-	/**
-	 * Construtor para inicializar o objeto Conta a partir da agencia e numero
-	 * 
-	 * @param agencia
-	 * @param numero
-	 */
+    public abstract void deposita(double valor);
+    
+    /**
+     * Valor precisa ser maior do que o saldo 
+     * @param valor
+     * @throws SaldoInsuficienteException
+     */
+    
+    public void saca(double valor) throws SaldoInsuficienteException{
+    	
+        if(this.saldo < valor) {
+            throw new SaldoInsuficienteException("Saldo: " + this.saldo + ", Valor: " + valor);
+        } 
+        
+        this.saldo -= valor;       
+    }
 
-//    public Conta(){}
+    public void transfere(double valor, Conta destino) throws SaldoInsuficienteException{
+        this.saca(valor);
+        destino.deposita(valor);
+    }
 
-	// construtor
-	public Conta(int agencia, int numero) {
-		Conta.total++;
-		System.out.println("O total de contas é: " + Conta.total);
-		if (agencia <= 0)
-			this.agencia = agencia;
-		this.numero = numero;
+    public double getSaldo(){
+        return this.saldo;
+    }
 
-		System.out.println("estou criando um conta " + this.numero);
+    public int getNumero(){
+        return this.numero;
+    }
 
-	}
+    public void setNumero(int numero){
+        if(numero <= 0) {
+            System.out.println("Nao pode valor menor igual a 0");
+            return;
+        }
+        this.numero = numero;
+    }
 
-	public abstract void deposita(double valor);
-//    {
-////        this.saldo += valor;
-//
-//    }
-	
-	/**
-	 * Valor que precisa ser maior do que o saldo
-	 * 
-	 * @param valor
-	 * @throws SaldoInsuficienteException
-	 */
+    public int getAgencia(){
+        return this.agencia;
+    }
 
-	public void saca(double valor) throws SaldoInsuficienteException {
+    public void setAgencia(int agencia){
+       if(agencia <= 0) {
+           System.out.println("Nao pode valor menor igual a 0");
+           return;
+       }
+       this.agencia = agencia;
+    }
 
-		if (this.saldo < valor) {
-			throw new SaldoInsuficienteException("O saldo " + this.saldo + ", Valor: " + valor);
-		}
-		this.saldo -= valor;
-	}
+    public void setTitular(Cliente titular){
+        this.titular = titular;
+    }
 
-	public void transfere(double valor, Conta destino) throws SaldoInsuficienteException {
-		this.saca(valor);
-		destino.deposita(valor);
-	}
+    public Cliente getTitular(){
+        return this.titular;
+    }
 
-	public double getSaldo() {
-		return this.saldo;
-	}
+    public static int getTotal(){
+        return Conta.total;
+    }
 
-	public int getNumero() {
-		return this.numero;
-	}
-
-	public void setNumero(int numero) {
-		if (numero <= 0) {
-			System.out.println("Não pode valor menor ou igual a Zero");
-			return;
-		}
-		this.numero = numero;
-	}
-
-	public int getAgencia() {
-		return this.agencia;
-	}
-
-	public void setAgencia(int agencia) {
-		if (agencia <= 0) {
-			System.out.println("Não pode valor menor ou igual a Zero");
-			return;
-		}
-		this.agencia = agencia;
-	}
-
-	public void setTitular(Cliente titular) {
-		this.titular = titular;
-	}
-
-	public Cliente getTitular() {
-		return this.titular;
-	}
-
-	public static int getTotal() {
-		return total;
-	}
 }
