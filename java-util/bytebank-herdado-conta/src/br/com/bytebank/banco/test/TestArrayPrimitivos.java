@@ -1,8 +1,7 @@
 package br.com.bytebank.banco.test;
 
-import java.util.Iterator;
 
-public class Teste {
+public class TestArrayPrimitivos {
 
 //	Array []
 
