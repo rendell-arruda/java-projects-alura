@@ -21,6 +21,10 @@ public class TesteOutrosWrappers {
 		
 		List<Number> lista = new ArrayList<>();
 		
+		lista.add(10);
+		lista.add(32.5);
+		lista.add(14f);
+		
 	}
 
 }
